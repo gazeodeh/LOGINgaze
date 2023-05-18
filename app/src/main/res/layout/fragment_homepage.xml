@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Homepage">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/firstthingneed"
+            android:layout_width="0dp"
+            android:layout_height="71dp"
+            android:layout_marginBottom="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="first "
+            app:layout_constraintBottom_toTopOf="@+id/secondthingneed"
+            app:layout_constraintEnd_toEndOf="@+id/fourthingneed"
+            app:layout_constraintStart_toStartOf="@+id/secondthingneed" />
+
+        <EditText
+            android:id="@+id/secondthingneed"
+            android:layout_width="220dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="296dp"
+            android:layout_marginBottom="182dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="second"
+            app:layout_constraintBottom_toTopOf="@+id/fourthingneed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.596"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/thirdthingdneed"
+            android:layout_width="212dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="72dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="third"
+            app:layout_constraintStart_toStartOf="@+id/fourthingneed"
+            app:layout_constraintTop_toBottomOf="@+id/secondthingneed" />
+
+        <EditText
+            android:id="@+id/fourthingneed"
+            android:layout_width="216dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="56dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="four"
+            app:layout_constraintBottom_toTopOf="@+id/addthingsneed"
+            app:layout_constraintStart_toStartOf="@+id/addthingsneed"
+            app:layout_constraintTop_toBottomOf="@+id/secondthingneed" />
+
+        <Button
+            android:id="@+id/addthingsneed"
+            android:layout_width="184dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="149dp"
+            android:text="add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fourthingneed" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

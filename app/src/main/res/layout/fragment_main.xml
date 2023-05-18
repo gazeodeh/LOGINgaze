@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="61dp"
+            android:layout_marginBottom="54dp"
+            android:src="@drawable/list"
+            app:layout_constraintBottom_toTopOf="@+id/tent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/googlemap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="31dp"
+            android:src="@drawable/maps"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fire" />
+
+        <ImageButton
+            android:id="@+id/food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="178dp"
+            android:src="@drawable/foods"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tent" />
+
+        <ImageButton
+            android:id="@+id/fire"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="407dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="147dp"
+            android:src="@drawable/fire1"
+            app:layout_constraintBottom_toTopOf="@+id/googlemap"
+            app:layout_constraintEnd_toStartOf="@+id/food"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/tent"
+            android:layout_width="163dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginBottom="159dp"
+            android:src="@drawable/tent"
+            app:layout_constraintBottom_toTopOf="@+id/food"
+            app:layout_constraintStart_toEndOf="@+id/fire"
+            app:layout_constraintTop_toBottomOf="@+id/list" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

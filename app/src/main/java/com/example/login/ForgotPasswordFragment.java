@@ -9,16 +9,21 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FORGOTPASSFRAGMENT#newInstance} factory method to
+ * Use the {@link ForgotPasswordFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FORGOTPASSFRAGMENT extends Fragment {
+public class ForgotPasswordFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +34,7 @@ public class FORGOTPASSFRAGMENT extends Fragment {
     private String mParam1;
     private String mParam2;
     private EditText etemail;
-    private ImageButton email;
+    private Button email;
     private FirebaseAuth mAuth;
 
     private void instalize() {
@@ -54,7 +59,7 @@ public class FORGOTPASSFRAGMENT extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(getContext(), "Email Has send" + "", Toast.LENGTH_SHORT).show();
-                        LOGINFRAFMENT LOGINFRAFMENT=new LOGINFRAFMENT();
+                        LoginFragment LOGINFRAFMENT=new LoginFragment();
                         FragmentManager manager=getFragmentManager();
                         manager.beginTransaction().replace(R.id.FRAME,LOGINFRAFMENT,LOGINFRAFMENT.getTag()).commit();
                     }
@@ -67,7 +72,7 @@ public class FORGOTPASSFRAGMENT extends Fragment {
     }
 
 
-    public FORGOTPASSFRAGMENT() {
+    public ForgotPasswordFragment() {
         // Required empty public constructor
     }
 
@@ -80,8 +85,8 @@ public class FORGOTPASSFRAGMENT extends Fragment {
      * @return A new instance of fragment FORGOTPASSFRAGMENT.
      */
     // TODO: Rename and change types and number of parameters
-    public static FORGOTPASSFRAGMENT newInstance(String param1, String param2) {
-        FORGOTPASSFRAGMENT fragment = new FORGOTPASSFRAGMENT();
+    public static ForgotPasswordFragment newInstance(String param1, String param2) {
+        ForgotPasswordFragment fragment = new ForgotPasswordFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -102,6 +107,12 @@ public class FORGOTPASSFRAGMENT extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_f_o_r_g_o_t_p_a_s_s_f_r_a_g_m_e_n_t, container, false);
+        return inflater.inflate(R.layout.fragment_forgot_password, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        instalize();
     }
 }

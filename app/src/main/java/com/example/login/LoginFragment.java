@@ -1,7 +1,5 @@
 package com.example.login;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,12 +12,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LOGINFRAFMENT#newInstance} factory method to
+ * Use the {@link LoginFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LOGINFRAFMENT extends Fragment {
+public class LoginFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,8 +39,7 @@ public class LOGINFRAFMENT extends Fragment {
     private TextView forgotpass;
     private FirebaseAuth mAuth;
 
-    public void func()
-    {
+    public void func() {
         etemail = getView().findViewById(R.id.Emailtextlogin);
         etpassword = getView().findViewById(R.id.passwordlogin);
         loginbtn = getView().findViewById(R.id.loginbtnn);
@@ -46,12 +48,11 @@ public class LOGINFRAFMENT extends Fragment {
             @Override
             public void onClick(View view) {
                 //forgot passfrag
-               /* forgetpassfragmentpenefactor forgetpassfragmentpenefactor=new forgetpassfragmentpenefactor();
-                FragmentManager manager=getFragmentManager();
-                manager.beginTransaction().replace(R.id.frameLayout,forgetpassfragmentpenefactor,forgetpassfragmentpenefactor.getTag()).commit();*/
+                ForgotPasswordFragment ForgotPasswordFragment = new ForgotPasswordFragment();
+                FragmentManager manager = getFragmentManager();
+                manager.beginTransaction().replace(R.id.FRAME, ForgotPasswordFragment, ForgotPasswordFragment.getTag()).commit();
             }
         });
-
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -82,7 +83,10 @@ public class LOGINFRAFMENT extends Fragment {
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getContext(), "somthing failed", Toast.LENGTH_SHORT).show();
                         }
-                    });}}});
+                    });
+                }
+            }
+        });
 
 //THE COUSTUMER HAVE TWO WAYS TO CREATE USER , THE FIRST WAY "IF THERE IS NI ACOUNT OTOMATIC GO THE CREATE USER" , "CLICK BUTTON SIGN UP"
 
@@ -92,14 +96,15 @@ public class LOGINFRAFMENT extends Fragment {
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            /*    signupbenefactorfragment signupbenefactorfragment=new signupbenefactorfragment();
-                FragmentManager manager=getFragmentManager();
-                manager.beginTransaction().replace(R.id.frameLayout,signupbenefactorfragment,signupbenefactorfragment.getTag()).commit();*/
+                SignupFragment SignupFragment = new SignupFragment();
+                FragmentManager manager = getFragmentManager();
+                manager.beginTransaction().replace(R.id.FRAME, SignupFragment, SignupFragment.getTag()).commit();
             }
         });
     }
 
-    public LOGINFRAFMENT() {
+
+    public LoginFragment() {
         // Required empty public constructor
     }
 
@@ -112,8 +117,8 @@ public class LOGINFRAFMENT extends Fragment {
      * @return A new instance of fragment LOGINFRAFMENT.
      */
     // TODO: Rename and change types and number of parameters
-    public static LOGINFRAFMENT newInstance(String param1, String param2) {
-        LOGINFRAFMENT fragment = new LOGINFRAFMENT();
+    public static LoginFragment newInstance(String param1, String param2) {
+        LoginFragment fragment = new LoginFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -134,6 +139,12 @@ public class LOGINFRAFMENT extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_l_o_g_i_n_f_r_a_f_m_e_n_t, container, false);
+        return inflater.inflate(R.layout.fragment_login, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        func();
     }
 }

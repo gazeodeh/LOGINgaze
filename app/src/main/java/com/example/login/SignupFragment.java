@@ -14,12 +14,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SIGNUPFRAGMENT#newInstance} factory method to
+ * Use the {@link SignupFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SIGNUPFRAGMENT extends Fragment {
+public class SignupFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +39,6 @@ public class SIGNUPFRAGMENT extends Fragment {
     private EditText etconfirmpassword;
     private Button btnsignup;
     private FirebaseAuth mAuth;
-
     private Button loginbtn;
 
     public void createUser(){
@@ -49,15 +53,14 @@ public class SIGNUPFRAGMENT extends Fragment {
                 if(etpassword.getText().toString().equals(etconfirmpassword.getText().toString())){
                     mAuth.createUserWithEmailAndPassword(etemail.getText().toString(),etpassword.getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
+                              @Override
                                 public void onSuccess(AuthResult authResult) {
                                     Toast.makeText(getContext(), "Account created.", Toast.LENGTH_SHORT).show();
                                     if(mAuth.getCurrentUser()!=null){
                                         mAuth.signOut();
                                     }
                                 }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
+                            }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -88,7 +91,7 @@ public class SIGNUPFRAGMENT extends Fragment {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LOGINFRAFMENT LOGINFRAFMENT=new LOGINFRAFMENT();
+                LoginFragment LOGINFRAFMENT=new LoginFragment();
                 FragmentManager manager=getFragmentManager();
                 manager.beginTransaction().replace(R.id.FRAME,LOGINFRAFMENT,LOGINFRAFMENT.getTag()).commit();
 
@@ -107,12 +110,10 @@ public class SIGNUPFRAGMENT extends Fragment {
                     return;
                 }
 
-                //   createUser();
-
-
-                Intent i = new Intent(getActivity(), detailsofbenefactor.class);
+                   createUser();
+               /* Intent i = new Intent(getActivity(), detailsofbenefactor.class);
                 startActivity(i);
-                ((detailsofbenefactor) getActivity()).overridePendingTransition(0, 0);
+                ((detailsofbenefactor) getActivity()).overridePendingTransition(0, 0);*/
 
 
             }
@@ -136,7 +137,7 @@ public class SIGNUPFRAGMENT extends Fragment {
         }
     }
 
-    public SIGNUPFRAGMENT() {
+    public SignupFragment() {
         // Required empty public constructor
     }
 
@@ -149,8 +150,8 @@ public class SIGNUPFRAGMENT extends Fragment {
      * @return A new instance of fragment SIGNUPFRAGMENT.
      */
     // TODO: Rename and change types and number of parameters
-    public static SIGNUPFRAGMENT newInstance(String param1, String param2) {
-        SIGNUPFRAGMENT fragment = new SIGNUPFRAGMENT();
+    public static SignupFragment newInstance(String param1, String param2) {
+        SignupFragment fragment = new SignupFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -171,6 +172,13 @@ public class SIGNUPFRAGMENT extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_s_i_g_n_u_p_f_r_a_g_m_e_n_t, container, false);
+        return inflater.inflate(R.layout.fragment_signup, container, false);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        instalize();
+    }
+
 }
